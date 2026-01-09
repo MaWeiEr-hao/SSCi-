@@ -1,0 +1,80 @@
+banks_reshaped.parquet not found. Generating mock data...
+After plausibility screens (set to NaN, not dropped):
+                  count       mean        50%         1%        99%
+NIM               500.0   3.070430   3.026269   0.724506   5.226156
+ROA               493.0   1.046017   1.047090  -0.138746   2.146347
+ROE               500.0   9.758435   9.816058  -1.016114  20.540783
+Efficiency_Ratio  499.0  59.994445  59.721444  35.925428  84.349853
+
+================ CORRELATION (PEARSON) ================
+                   Branches  dBranches_pct  ...  Dep_Savings_Share  Dep_Time_Share
+Branches           1.000000       0.270272  ...           0.004530        0.019990
+dBranches_pct      0.270272       1.000000  ...           0.041009        0.038780
+NIM                0.033872      -0.014587  ...          -0.021967        0.024702
+ROA               -0.033069       0.012342  ...           0.025591        0.066141
+ROE                0.005352       0.065952  ...           0.010393        0.001759
+Efficiency_Ratio  -0.034805       0.027268  ...          -0.006841        0.060977
+Fee_Income_Share  -0.037545      -0.031396  ...           0.014020       -0.002012
+Dep_Demand_Share   0.044071       0.109940  ...          -0.005579       -0.040119
+Dep_Savings_Share  0.004530       0.041009  ...           1.000000       -0.040714
+Dep_Time_Share     0.019990       0.038780  ...          -0.040714        1.000000
+
+[10 rows x 10 columns]
+
+================ CORRELATION (SPEARMAN) ================
+                   Branches  dBranches_pct  ...  Dep_Savings_Share  Dep_Time_Share
+Branches           1.000000       0.650047  ...          -0.002008        0.024252
+dBranches_pct      0.650047       1.000000  ...           0.045981       -0.030579
+NIM                0.041661      -0.004611  ...          -0.035115        0.012868
+ROA               -0.028173      -0.006714  ...           0.020539        0.061077
+ROE                0.007425       0.017866  ...           0.002723        0.008177
+Efficiency_Ratio  -0.025951      -0.001695  ...          -0.014214        0.048809
+Fee_Income_Share  -0.044817      -0.060416  ...          -0.004706        0.008505
+Dep_Demand_Share   0.053131       0.107788  ...          -0.004440       -0.038526
+Dep_Savings_Share -0.002008       0.045981  ...           1.000000       -0.047179
+Dep_Time_Share     0.024252      -0.030579  ...          -0.047179        1.000000
+
+[10 rows x 10 columns]
+
+================ COUNTRY DIFFERENCES ================
+               NIM | ANOVA p=0.3269 | Kruskal p=0.3902 | Ns: {np.str_('DE'): 90, np.str_('FR'): 90, np.str_('JP'): 90, np.str_('UK'): 110, np.str_('US'): 120}
+               ROA | ANOVA p=0.05299 | Kruskal p=0.09695 | Ns: {np.str_('DE'): 89, np.str_('FR'): 86, np.str_('JP'): 89, np.str_('UK'): 110, np.str_('US'): 119}
+               ROE | ANOVA p=0.5946 | Kruskal p=0.7048 | Ns: {np.str_('DE'): 90, np.str_('FR'): 90, np.str_('JP'): 90, np.str_('UK'): 110, np.str_('US'): 120}
+  Efficiency_Ratio | ANOVA p=0.3571 | Kruskal p=0.4159 | Ns: {np.str_('DE'): 89, np.str_('FR'): 90, np.str_('JP'): 90, np.str_('UK'): 110, np.str_('US'): 120}
+  Fee_Income_Share | ANOVA p=0.2798 | Kruskal p=0.1951 | Ns: {np.str_('DE'): 90, np.str_('FR'): 90, np.str_('JP'): 90, np.str_('UK'): 110, np.str_('US'): 120}
+
+================ BASELINE PANELOLS (ROA) ================
+                          PanelOLS Estimation Summary
+================================================================================
+Dep. Variable:                    ROA   R-squared:                        0.0144
+Estimator:                   PanelOLS   R-squared (Between):             -0.0214
+No. Observations:                 492   R-squared (Within):               0.0139
+Date:                Fri, Jan 09 2026   R-squared (Overall):              0.0110
+Time:                        13:48:37   Log-likelihood                   -315.03
+Cov. Estimator:             Clustered
+                                        F-statistic:                      2.0999
+Entities:                          50   P-value                           0.0996
+Avg Obs:                       9.8400   Distribution:                   F(3,430)
+Min Obs:                       9.0000
+Max Obs:                      10.0000   F-statistic (robust):             2.3620
+                                        P-value                           0.0707
+Time periods:                      10   Distribution:                   F(3,430)
+Avg Obs:                       49.200
+Min Obs:                       47.000
+Max Obs:                       50.000
+
+                                Parameter Estimates
+====================================================================================
+                  Parameter  Std. Err.     T-stat    P-value    Lower CI    Upper CI
+------------------------------------------------------------------------------------
+const                0.9660     0.1952     4.9491     0.0000      0.5824      1.3496
+NIM                  0.0565     0.0216     2.6112     0.0093      0.0140      0.0990
+Efficiency_Ratio    -0.0016     0.0022    -0.7083     0.4792     -0.0059      0.0028
+Fee_Income_Share  6.151e-05     0.0058     0.0107     0.9915     -0.0113      0.0114
+====================================================================================
+
+F-test for Poolability: 0.9223
+P-value: 0.6383
+Distribution: F(58,430)
+
+Included effects: Entity, Time
