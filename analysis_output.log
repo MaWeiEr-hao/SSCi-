@@ -1,0 +1,89 @@
+Generating mock data for DF...
+Mock DF generated with shape: (1000, 13)
+   bank_id  year    country  ...  Dep_Time_Share  Branches  dBranches_pct
+0        1  2015  Country_C  ...        2.820579       353      -2.347372
+1        1  2016  Country_C  ...       21.597251       570     -12.195529
+2        1  2017  Country_C  ...       49.161544       514       0.611096
+3        1  2018  Country_C  ...       22.007625       464       5.651141
+4        1  2019  Country_C  ...       21.257794       575      -6.640930
+
+[5 rows x 13 columns]
+After plausibility screens (set to NaN, not dropped):
+                   count       mean        50%         1%        99%
+NIM               1000.0   2.988458   2.974346   0.162906   5.822891
+ROA                973.0   1.004395   1.091282  -1.941744   2.225658
+ROE                977.0   9.698867   9.779133 -79.970469  75.141177
+Efficiency_Ratio  1000.0  50.275702  50.377439  20.344708  70.943513
+
+================ CORRELATION (PEARSON) ================
+                   Branches  dBranches_pct  ...  Dep_Savings_Share  Dep_Time_Share
+Branches           1.000000      -0.004386  ...           0.048346       -0.022218
+dBranches_pct     -0.004386       1.000000  ...          -0.002522       -0.046476
+NIM                0.054729      -0.005343  ...          -0.035619       -0.011407
+ROA                0.020793       0.006001  ...           0.043310        0.010993
+ROE               -0.058063       0.019512  ...          -0.062548        0.004430
+Efficiency_Ratio   0.071807       0.012818  ...           0.002146        0.039350
+Fee_Income_Share  -0.016062       0.075377  ...           0.057039       -0.016777
+Dep_Demand_Share  -0.026220      -0.004074  ...          -0.016104        0.015701
+Dep_Savings_Share  0.048346      -0.002522  ...           1.000000        0.017068
+Dep_Time_Share    -0.022218      -0.046476  ...           0.017068        1.000000
+
+[10 rows x 10 columns]
+
+================ CORRELATION (SPEARMAN) ================
+                   Branches  dBranches_pct  ...  Dep_Savings_Share  Dep_Time_Share
+Branches           1.000000      -0.015196  ...           0.049876       -0.023339
+dBranches_pct     -0.015196       1.000000  ...           0.003637       -0.048263
+NIM                0.050964      -0.004490  ...          -0.036001       -0.015415
+ROA                0.029943      -0.008707  ...           0.002687        0.003626
+ROE               -0.048574      -0.023399  ...          -0.014174       -0.019138
+Efficiency_Ratio   0.077339       0.015898  ...           0.005609        0.046185
+Fee_Income_Share  -0.004568       0.078153  ...           0.058564       -0.022426
+Dep_Demand_Share  -0.026219       0.003181  ...          -0.015695        0.015596
+Dep_Savings_Share  0.049876       0.003637  ...           1.000000        0.016932
+Dep_Time_Share    -0.023339      -0.048263  ...           0.016932        1.000000
+
+[10 rows x 10 columns]
+
+================ COUNTRY DIFFERENCES ================
+               NIM | ANOVA p=0.9602 | Kruskal p=0.7567 | Ns: {np.str_('Country_A'): 210, np.str_('Country_B'): 210, np.str_('Country_C'): 300, np.str_('Country_D'): 280}
+               ROA | ANOVA p=6.176e-05 | Kruskal p=1.186e-07 | Ns: {np.str_('Country_A'): 204, np.str_('Country_B'): 205, np.str_('Country_C'): 291, np.str_('Country_D'): 273}
+               ROE | ANOVA p=0.7897 | Kruskal p=0.03651 | Ns: {np.str_('Country_A'): 206, np.str_('Country_B'): 205, np.str_('Country_C'): 293, np.str_('Country_D'): 273}
+  Efficiency_Ratio | ANOVA p=3.836e-09 | Kruskal p=6.884e-07 | Ns: {np.str_('Country_A'): 210, np.str_('Country_B'): 210, np.str_('Country_C'): 300, np.str_('Country_D'): 280}
+  Fee_Income_Share | ANOVA p=0.1293 | Kruskal p=0.08812 | Ns: {np.str_('Country_A'): 210, np.str_('Country_B'): 210, np.str_('Country_C'): 300, np.str_('Country_D'): 280}
+
+================ BASELINE PANELOLS (ROA) ================
+                          PanelOLS Estimation Summary
+================================================================================
+Dep. Variable:                    ROA   R-squared:                        0.1189
+Estimator:                   PanelOLS   R-squared (Between):             -0.7989
+No. Observations:                 973   R-squared (Within):               0.1173
+Date:                Tue, Jan 20 2026   R-squared (Overall):             -0.4582
+Time:                        13:47:20   Log-likelihood                   -361.29
+Cov. Estimator:             Clustered
+                                        F-statistic:                      38.722
+Entities:                         100   P-value                           0.0000
+Avg Obs:                       9.7300   Distribution:                   F(3,861)
+Min Obs:                       8.0000
+Max Obs:                      10.0000   F-statistic (robust):             26.563
+                                        P-value                           0.0000
+Time periods:                      10   Distribution:                   F(3,861)
+Avg Obs:                       97.300
+Min Obs:                       95.000
+Max Obs:                      100.000
+
+                                Parameter Estimates
+====================================================================================
+                  Parameter  Std. Err.     T-stat    P-value    Lower CI    Upper CI
+------------------------------------------------------------------------------------
+const               -0.5822     6.9357    -0.0839     0.9331     -14.195      13.031
+NIM                  0.2051     0.1253     1.6367     0.1020     -0.0409      0.4511
+Efficiency_Ratio     0.0199     0.1310     0.1517     0.8795     -0.2373      0.2771
+Fee_Income_Share  6.353e-05     0.0067     0.0095     0.9924     -0.0130      0.0132
+====================================================================================
+
+F-test for Poolability: 16.013
+P-value: 0.0000
+Distribution: F(108,861)
+
+Included effects: Entity, Time
